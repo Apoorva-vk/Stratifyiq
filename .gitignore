@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.venv*/
+.pytest_cache/
+
+# Node / frontend
+frontend/node_modules/
+frontend/dist/
+
+# Local data and secrets
+*.db
+.env
+send-weekly-report.bat
+
+# Editor
+.vscode/
+.idea/

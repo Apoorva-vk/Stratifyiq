@@ -1,0 +1,108 @@
+/* =====================================================================
+   Responsive layout for every page. Loaded last.
+   ===================================================================== */
+
+/* Shared page container: centred, consistent gutters, never wider than the screen */
+main {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 28px clamp(14px, 3vw, 40px) 48px;
+}
+main > * { max-width: 100%; }
+
+/* Hero banners follow the page gutters */
+.hero { margin: 0 calc(-1 * clamp(14px, 3vw, 40px)) 28px; }
+.hero-main { padding: clamp(28px, 4vw, 52px) clamp(20px, 4vw, 48px); }
+.hero-band { padding: 14px clamp(20px, 4vw, 48px); }
+
+/* Cards and grids never overflow their parent */
+.grid { grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr)); }
+.charts { grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); }
+.report-cards { grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); }
+.form-grid { grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr)); }
+.rings { justify-content: flex-start; }
+
+/* Inputs shrink to fit their container */
+main input, main select, main textarea { max-width: 100%; box-sizing: border-box; }
+main input[style], main select[style] { min-width: 0 !important; }
+
+/* Tables scroll sideways instead of breaking the page */
+main table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+main table thead, main table tbody { display: table; width: 100%; }
+main table tr { display: table-row; }
+main table th, main table td { min-width: 96px; }
+
+/* Top bar: navigation scrolls on small screens rather than wrapping awkwardly */
+.topbar { flex-wrap: wrap; }
+.topbar nav {
+  display: flex; flex: 1 1 auto; min-width: 0;
+  overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;
+}
+.topbar nav::-webkit-scrollbar { display: none; }
+.topbar nav button { white-space: nowrap; flex-shrink: 0; }
+.topbar .top-actions { flex-shrink: 0; }
+
+/* Footer stacks neatly */
+.site-footer { margin-left: calc(-1 * clamp(14px, 3vw, 40px)); margin-right: calc(-1 * clamp(14px, 3vw, 40px)); }
+
+/* Assistant button and panel stay on screen */
+.assistant-panel { max-width: calc(100vw - 32px); }
+
+/* ---------- Tablets ---------- */
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-art { min-height: 200px; }
+  .hero-band { font-size: 16px; }
+  .row > * { min-width: 0; }
+  .metrics, .stats-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 720px) {
+  .topbar { padding: 10px 14px; gap: 10px; }
+  .topbar .brand { font-size: 17px; }
+  .topbar nav button { padding: 10px 10px; font-size: 13px; }
+  .topbar .top-actions { width: 100%; justify-content: flex-end; }
+
+  .hero-title { font-size: clamp(34px, 11vw, 48px); }
+  .hero-sub { font-size: 14px; }
+  .hero-band { justify-content: flex-start; gap: 6px 16px; font-size: 14px; }
+  .hero-band span + span::before { display: none; }
+
+  .row { flex-direction: column; align-items: stretch; }
+  .row > label { width: 100%; }
+  .row button { width: 100%; }
+  .form-grid button { width: 100%; }
+
+  .barrow { grid-template-columns: 1fr; gap: 6px; }
+  .trow { grid-template-columns: 1fr; gap: 8px; }
+  .charts { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .score strong { font-size: 24px; }
+
+  .card { padding: 16px; }
+  .countdown { flex-direction: column; align-items: flex-start; }
+  .countdown-days { min-width: 0; }
+
+  .assistant-fab { right: 14px; bottom: 14px; }
+  .assistant-panel { right: 14px; left: 14px; bottom: 80px; width: auto; height: 62vh; }
+
+  .site-footer { grid-template-columns: 1fr; padding: 28px 18px; }
+  .foot-links { justify-content: flex-start; }
+
+  .lp-links { display: none; }
+}
+
+/* ---------- Small phones ---------- */
+@media (max-width: 420px) {
+  .grid { grid-template-columns: 1fr; }
+  .topbar nav button { padding: 9px 8px; font-size: 12px; }
+  .hero-title { font-size: 32px; }
+}

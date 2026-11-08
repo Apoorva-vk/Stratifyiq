@@ -1,0 +1,163 @@
+/* =====================================================================
+   StratifyIQ bold theme: charcoal, orange and condensed uppercase type.
+   Loaded last. Light and dark modes share the same layout and accent.
+   ===================================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap");
+
+:root {
+  --bg: #F2EFEA;
+  --surface: #FFFFFF;
+  --surface-2: #F7F5F1;
+  --text: #141414;
+  --muted: #6B6B6B;
+  --border: #DCD7CD;
+  --navy: #141414;
+  --orange: #FF6A13;
+  --orange-dark: #E8560A;
+}
+body.dark {
+  --bg: #0E0E0E;
+  --surface: #181818;
+  --surface-2: #1F1F1F;
+  --text: #F5F5F5;
+  --muted: #A3A3A3;
+  --border: #2C2C2C;
+  --navy: #0A0A0A;
+  --orange: #FF6A13;
+  --orange-dark: #FF8A44;
+}
+
+body, body.dark { font-family: Poppins, system-ui, sans-serif; background: var(--bg); color: var(--text); }
+body h1, body h2, body h3, body h4, body.dark h1, body.dark h2, body.dark h3, body.dark h4 {
+  font-family: Oswald, Poppins, sans-serif; text-transform: uppercase; letter-spacing: 0.02em; font-weight: 600;
+}
+body h3, body.dark h3 { font-size: 20px; color: var(--text); }
+body h4, body.dark h4 { font-size: 16px; color: var(--text); }
+
+/* ---------- Top bar ---------- */
+body .topbar, body.dark .topbar {
+  background: #141414; color: #FFFFFF; border: none; box-shadow: none;
+  padding: 0 28px; min-height: 68px; position: sticky; top: 0; z-index: 20;
+}
+body .topbar .brand, body.dark .topbar .brand {
+  color: #FFFFFF; font-family: Oswald, sans-serif; font-size: 20px; letter-spacing: 0.06em; font-weight: 600;
+}
+body .topbar nav button, body.dark .topbar nav button {
+  background: transparent; color: #BDBDBD; border: none; border-radius: 0;
+  padding: 24px 12px; font-family: Oswald, sans-serif; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase;
+  box-shadow: inset 0 -3px 0 transparent;
+}
+body .topbar nav button:hover, body.dark .topbar nav button:hover { color: #FFFFFF; }
+body .topbar nav button.active, body.dark .topbar nav button.active { color: #FFFFFF; box-shadow: inset 0 -3px 0 var(--orange); }
+body .topbar .top-actions, body.dark .topbar .top-actions { display: flex; gap: 8px; align-items: center; }
+body .topbar .bell, body.dark .topbar .bell { border: 1px solid #3A3A3A; color: #FFFFFF; border-radius: 0; background: transparent; }
+body .bell-count, body.dark .bell-count { background: var(--orange); color: #FFFFFF; border-radius: 0; }
+body .logo-mark { flex-shrink: 0; }
+
+/* ---------- Buttons: sharp, uppercase ---------- */
+body button, body.dark button {
+  background: var(--orange); color: #FFFFFF; border: none; border-radius: 0;
+  padding: 12px 22px; font-family: Oswald, sans-serif; font-size: 15px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; transition: background 0.15s, transform 0.1s;
+}
+body button:hover:not(:disabled), body.dark button:hover:not(:disabled) { background: var(--orange-dark); transform: translateY(-1px); }
+body button:disabled, body.dark button:disabled { opacity: 0.45; cursor: not-allowed; }
+body button.danger, body.dark button.danger { background: #B91C1C; }
+body button.danger:hover:not(:disabled), body.dark button.danger:hover:not(:disabled) { background: #7F1D1D; }
+body .link-btn, body.dark .link-btn { background: none; color: var(--orange); border: none; text-decoration: underline; padding: 0; text-transform: none; font-family: Poppins, sans-serif; font-size: 13px; letter-spacing: 0; transform: none; }
+
+/* ---------- Forms ---------- */
+body input, body select, body textarea, body.dark input, body.dark select, body.dark textarea {
+  background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 0; padding: 11px 12px; font-size: 14px;
+}
+body input:focus, body select:focus, body.dark input:focus, body.dark select:focus { outline: none; border-color: var(--orange); box-shadow: inset 0 -2px 0 var(--orange); }
+body label, body.dark label { font-family: Oswald, sans-serif; text-transform: uppercase; letter-spacing: 0.06em; font-size: 12px; color: var(--muted); font-weight: 500; }
+
+/* ---------- Page hero (one per page, different artwork) ---------- */
+.hero { position: relative; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); background: #111111; color: #FFFFFF; margin: -24px -24px 28px; min-height: 300px; overflow: hidden; }
+.hero-main { padding: 56px 48px 40px; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
+.hero-kicker { display: flex; align-items: center; gap: 12px; color: var(--orange); font-family: Oswald, sans-serif; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; margin: 0 0 14px; }
+.hero-kicker::before { content: ""; width: 36px; height: 3px; background: var(--orange); }
+body .hero-title, body.dark .hero-title { color: #FFFFFF; font-size: clamp(38px, 5vw, 64px); line-height: 0.98; font-weight: 700; margin: 0; letter-spacing: 0.01em; }
+.hero-accent { color: var(--orange); }
+body .hero-sub, body.dark .hero-sub { color: #C9C9C9; font-family: Poppins, sans-serif; text-transform: none; letter-spacing: 0; font-size: 15px; max-width: 520px; margin: 16px 0 0; line-height: 1.6; }
+.hero-actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+.hero-art { position: relative; min-height: 240px; }
+.hero-art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-band {
+  grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px 24px;
+  background: var(--orange); color: #FFFFFF; padding: 16px 48px;
+  font-family: Oswald, sans-serif; font-size: 18px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;
+}
+.hero-band span { position: relative; }
+.hero-band span + span::before { content: ""; position: absolute; left: -14px; top: 6px; bottom: 6px; width: 1px; background: rgba(255,255,255,0.5); }
+
+/* ---------- Cards and stat tiles ---------- */
+body .card, body.dark .card {
+  background: var(--surface); color: var(--text); border: 1px solid var(--border); border-top: 4px solid var(--orange);
+  border-radius: 0; padding: 22px; box-shadow: none;
+}
+body .score, body.dark .score { background: var(--surface); border: 1px solid var(--border); border-radius: 0; padding: 18px 20px; }
+body .score::before, body.dark .score::before { width: 100%; height: 3px; top: 0; bottom: auto; left: 0; background: var(--orange); }
+body .score span, body.dark .score span { font-family: Oswald, sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+body .score strong, body.dark .score strong { font-family: Oswald, sans-serif; font-size: 34px; font-weight: 600; color: var(--text); }
+body .ring-card.tilt, body.dark .ring-card.tilt { background: var(--surface); border: 1px solid var(--border); border-top: 4px solid var(--orange); border-radius: 0; box-shadow: none; }
+body .ring-inner, body.dark .ring-inner { background: var(--surface); box-shadow: none; }
+
+/* ---------- Tables ---------- */
+body table, body.dark table { background: var(--surface); border: 1px solid var(--border); border-radius: 0; }
+body th, body.dark th { background: #141414; color: #FFFFFF; font-family: Oswald, sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; border: none; }
+body td, body.dark td { border-bottom: 1px solid var(--border); font-size: 13px; }
+
+/* ---------- Badges, messages ---------- */
+body .badge, body.dark .badge { border-radius: 0; font-family: Oswald, sans-serif; font-size: 12px; letter-spacing: 0.08em; padding: 4px 10px; font-weight: 500; }
+body .success, body.dark .success { background: #E9F7EE; color: #166534; border-left: 4px solid #16A34A; border-radius: 0; padding: 10px 14px; }
+body .error, body.dark .error { background: #FDECEC; color: #991B1B; border-left: 4px solid #B91C1C; border-radius: 0; padding: 10px 14px; }
+body.dark .success { background: #0F2A1C; color: #86EFAC; }
+body.dark .error { background: #2A1414; color: #FCA5A5; }
+
+/* ---------- Panels ---------- */
+body .leader, body.dark .leader, body .suggestion, body.dark .suggestion, body .story-line, body.dark .story-line,
+body .alert-panel, body.dark .alert-panel { border-radius: 0; border: 1px solid var(--border); background: var(--surface); }
+body .reminder, body.dark .reminder { border-radius: 0; border-left: 4px solid var(--orange); }
+body .countdown, body.dark .countdown { border-radius: 0; background: #141414; color: #FFFFFF; border-left: 6px solid var(--orange); }
+body .countdown-days, body.dark .countdown-days { color: var(--orange); font-family: Oswald, sans-serif; }
+body .assistant-fab, body.dark .assistant-fab { border-radius: 0; background: var(--orange); }
+body .assistant-panel, body.dark .assistant-panel { border-radius: 0; border: 1px solid var(--border); }
+body .assistant-head, body.dark .assistant-head { background: #141414; color: #FFFFFF; font-family: Oswald, sans-serif; text-transform: uppercase; letter-spacing: 0.06em; }
+body .msg.user, body.dark .msg.user { background: var(--orange); color: #FFFFFF; border-radius: 0; }
+body .msg.bot, body.dark .msg.bot { border-radius: 0; }
+
+/* ---------- Site footer ---------- */
+.site-footer { background: #0A0A0A; color: #B9B9B9; margin: 48px -24px -24px; padding: 40px 48px 28px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; align-items: center; }
+.foot-brand { display: flex; align-items: center; gap: 10px; color: #FFFFFF; font-family: Oswald, sans-serif; font-size: 20px; letter-spacing: 0.06em; text-transform: uppercase; }
+.site-footer p { margin: 8px 0 0; font-size: 13px; }
+.foot-links { display: flex; gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
+.foot-links .link-btn { color: #E5E5E5; }
+.foot-copy { grid-column: 1 / -1; border-top: 1px solid #222; padding-top: 16px; font-size: 12px; color: #7A7A7A; }
+
+/* ---------- Login: split with artwork ---------- */
+body .login, body.dark .login { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); min-height: 100vh; background: var(--bg); padding: 0; }
+body .brand-panel, body.dark .brand-panel { background: #111111; color: #FFFFFF; padding: 56px; display: flex; flex-direction: column; gap: 18px; position: relative; overflow: hidden; }
+body .brand-panel .brand, body.dark .brand-panel .brand { display: flex; align-items: center; gap: 10px; font-family: Oswald, sans-serif; font-size: 22px; letter-spacing: 0.06em; color: #FFFFFF; }
+body .login-title, body.dark .login-title { color: #FFFFFF; font-size: clamp(40px, 5vw, 60px); line-height: 1; font-weight: 700; margin: 24px 0 0; }
+body .brand-panel p, body.dark .brand-panel p { color: #C9C9C9; font-size: 15px; line-height: 1.6; margin: 0; max-width: 460px; }
+body .brand-points, body.dark .brand-points { list-style: none; padding: 0; margin: 6px 0 0; display: flex; flex-direction: column; gap: 10px; }
+body .brand-points li, body.dark .brand-points li { color: #FFFFFF; font-size: 14px; padding-left: 22px; position: relative; }
+body .brand-points li::before, body.dark .brand-points li::before { content: ""; position: absolute; left: 0; top: 7px; width: 10px; height: 10px; background: var(--orange); }
+body .brand-art, body.dark .brand-art { position: absolute; right: -40px; bottom: -40px; width: 420px; height: 280px; opacity: 0.55; pointer-events: none; }
+body .brand-art .hero, body.dark .brand-art .hero { margin: 0; min-height: 0; }
+body .brand-art .hero-main, body.dark .brand-art .hero-main, body .brand-art .hero-band, body.dark .brand-art .hero-band { display: none; }
+body .brand-art .hero-art, body.dark .brand-art .hero-art { min-height: 280px; }
+body .login-card, body.dark .login-card { margin: auto; width: min(400px, 90vw); padding: 40px; display: flex; flex-direction: column; gap: 12px; }
+body .login-card h2, body.dark .login-card h2 { font-size: 28px; margin: 0 0 8px; }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; margin: -24px -16px 24px; }
+  .hero-band { padding: 14px 20px; font-size: 15px; }
+  .hero-main { padding: 36px 22px 28px; }
+  body .login, body.dark .login { grid-template-columns: 1fr; }
+  body .brand-panel, body.dark .brand-panel { padding: 36px 24px; }
+  .site-footer { grid-template-columns: 1fr; padding: 32px 22px; margin: 36px -16px -24px; }
+  .foot-links { justify-content: flex-start; }
+}

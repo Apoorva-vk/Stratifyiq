@@ -1,0 +1,9 @@
+/* 3D depth for cards. No sliding or reveal animations. */
+.card, .score, .lp-pcard, .lp-feature, .ring-card, .lp2-card, .lp2-tile, .lp2-points li {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.card:hover, .score:hover, .lp-pcard:hover, .lp-feature:hover, .ring-card:hover, .lp2-card:hover, .lp2-tile:hover {
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.22);
+}

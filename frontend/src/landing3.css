@@ -1,0 +1,33 @@
+/* Landing page text colours and transitions. Scoped to .lp2 so the global theme cannot override them. */
+.lp2 h1, .lp2 h2, .lp2 h3, .lp2 h4 { font-family: "Cormorant Garamond", serif; text-transform: none; letter-spacing: 0.005em; }
+.lp2 .lp2-title { color: #FFF6EC; }
+.lp2 .lp2-h2 { color: #1F1A16; }
+.lp2 .lp2-kicker { color: #B4500F; }
+.lp2 .lp2-card h3, .lp2 .lp2-tile-body h3 { color: #1F1A16; }
+.lp2 .lp2-card p, .lp2 .lp2-tile-body p { color: #6B5B4D; }
+.lp2 .lp2-alt .lp2-h2 { color: #1F1A16; }
+.lp2 .lp2-points strong { color: #FFF6EC; }
+.lp2 .lp2-points span { color: #CDB39A; }
+.lp2 .lp2-cta h2 { color: #FFF6EC; }
+.lp2 .lp2-cta p { color: #E6CDB4; }
+.lp2 .lp2-foot-brand { color: #FFF6EC; }
+.lp2 .lp2-foot-col > span { color: #FFF6EC; }
+.lp2 .lp2-hero .lp2-lead { color: #E6CDB4; }
+
+/* Transitions: colours, shadows and borders ease in and out (no sliding) */
+.lp2 button, .lp2 a { transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, opacity 0.25s ease; }
+.lp2 .lp2-links button, .lp2-foot-col button, .lp2-foot-col a { transition: color 0.25s ease, background-color 0.25s ease; }
+.lp2 .lp2-btn { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+.lp2 .lp2-btn:hover { box-shadow: 0 14px 30px rgba(232, 112, 26, 0.45); }
+.lp2 .lp2-ghost:hover { border-color: rgba(255, 246, 236, 0.7); }
+.lp2 .lp2-link { transition: color 0.25s ease, text-decoration-color 0.25s ease; }
+.lp2 .lp2-card, .lp2 .lp2-tile { transition: transform 0.25s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease; }
+.lp2 .lp2-card:hover, .lp2 .lp2-tile:hover { border-color: #E8701A; box-shadow: 0 20px 40px rgba(60, 28, 10, 0.14); }
+.lp2 .lp2-tile-art { transition: filter 0.4s ease; }
+.lp2 .lp2-tile:hover .lp2-tile-art { filter: brightness(1.08) saturate(1.1); }
+.lp2 .lp2-card-icon, .lp2 .lp2-point-icon { transition: background-color 0.3s ease, color 0.3s ease; }
+.lp2 .lp2-card:hover .lp2-card-icon { background: #E8701A; color: #FFFFFF; }
+.lp2 .lp2-face { transition: background 0.4s ease, border-color 0.4s ease; }
+.lp2 .lp2-cube { transition: transform 0.5s ease-out; }
+.lp2-nav { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+.lp2-nav.scrolled { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25); }

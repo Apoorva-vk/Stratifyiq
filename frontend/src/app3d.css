@@ -1,0 +1,145 @@
+/* =====================================================================
+   App interior: each page sits on a raised board, with 3D cards,
+   stat tiles and buttons. Scoped to .app, so the landing page is unchanged.
+   Transitions change colour, depth and shadow only. Nothing slides.
+   ===================================================================== */
+.app {
+  min-height: 100vh;
+  background:
+    radial-gradient(900px 420px at 85% -8%, rgba(255, 106, 19, 0.13), transparent 60%),
+    radial-gradient(700px 380px at -5% 10%, rgba(255, 106, 19, 0.06), transparent 60%),
+    var(--bg);
+}
+.app main { max-width: 1280px; margin: 0 auto; padding: 26px clamp(12px, 3vw, 36px) 56px; }
+
+/* Each page is a raised board */
+.app main > div {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 24px;
+  overflow: hidden;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 1px 2px rgba(0, 0, 0, 0.08),
+    0 40px 80px -36px rgba(0, 0, 0, 0.5);
+}
+.app main > div::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px;
+  background: linear-gradient(90deg, var(--orange), #FFB27A 60%, transparent);
+}
+
+/* Page banner sits inside the board, edge to edge */
+.app main > div > .hero {
+  margin: -24px -24px 28px;
+  border-radius: 0;
+  perspective: 1200px;
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+}
+.app main > div > .hero .hero-art svg {
+  transform: rotateX(10deg) rotateY(-7deg) translateZ(20px);
+  transform-origin: 50% 60%;
+  transition: transform 0.5s ease;
+}
+.app main > div > .hero:hover .hero-art svg { transform: rotateX(4deg) rotateY(-3deg) translateZ(30px); }
+
+/* Cards: layered 3D surfaces with a glossy top edge */
+body .app .card, body.dark .app .card {
+  position: relative;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--orange);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0) 45%), var(--surface);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    0 18px 36px -20px rgba(0, 0, 0, 0.5);
+  transform-style: preserve-3d;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+body .app .card:hover, body.dark .app .card:hover {
+  border-color: rgba(255, 106, 19, 0.55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 28px 50px -22px rgba(255, 106, 19, 0.28), 0 24px 48px -20px rgba(0, 0, 0, 0.6);
+}
+
+/* Stat tiles: raised, with a coloured base */
+body .app .score, body.dark .app .score {
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: linear-gradient(160deg, rgba(255, 106, 19, 0.08), transparent 60%), var(--surface);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 16px 30px -18px rgba(0, 0, 0, 0.5);
+  transform-style: preserve-3d;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+body .app .score::before, body.dark .app .score::before {
+  height: 4px; width: 100%; top: 0; bottom: auto; left: 0; background: linear-gradient(90deg, var(--orange), #FFB27A);
+}
+
+/* Rings and charts sit on raised plates */
+.app .ring-card.tilt { border-radius: 20px; background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 50%), var(--surface); box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 26px 50px -24px rgba(0, 0, 0, 0.55); }
+.app .ring { filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.25)); }
+
+/* Buttons with a tactile 3D edge */
+.app button {
+  border-radius: 12px;
+  box-shadow: 0 4px 0 #B4500F, 0 12px 22px -10px rgba(255, 106, 19, 0.55);
+  transition: box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+.app button:hover:not(:disabled) { box-shadow: 0 6px 0 #B4500F, 0 16px 28px -10px rgba(255, 106, 19, 0.7); }
+.app button:active:not(:disabled) { box-shadow: 0 1px 0 #B4500F; }
+.app button.danger { box-shadow: 0 4px 0 #7F1D1D, 0 12px 22px -10px rgba(185, 28, 28, 0.5); }
+.app .topbar button, .app .topbar .bell { box-shadow: none; }
+.app .topbar nav button:hover { box-shadow: none; }
+
+/* Inputs with a recessed look */
+.app input, .app select, .app textarea {
+  border-radius: 10px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Tables sit in a rounded, raised frame */
+.app main table {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 34px -20px rgba(0, 0, 0, 0.5);
+}
+.app main th { background: linear-gradient(180deg, #1C1C1C, #141414); }
+.app main tr { transition: background-color 0.2s ease; }
+
+/* Section titles get an orange marker */
+.app main h3 { position: relative; padding-left: 14px; }
+.app main h3::before { content: ""; position: absolute; left: 0; top: 0.2em; bottom: 0.2em; width: 4px; border-radius: 2px; background: var(--orange); box-shadow: 0 0 12px rgba(255, 106, 19, 0.6); }
+
+/* Badges, chips and banners */
+.app .badge, .app .chip, .app .badge-chip { border-radius: 999px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.12); }
+.app .success, .app .error, .app .view-only { border-radius: 12px; box-shadow: 0 10px 22px -14px rgba(0, 0, 0, 0.5); }
+.app .countdown { border-radius: 18px; box-shadow: 0 24px 40px -20px rgba(0, 0, 0, 0.6); }
+
+/* Footer and assistant sit above the board */
+.app .site-footer { border-radius: 0; }
+
+/* Responsive board */
+@media (max-width: 720px) {
+  .app main > div { padding: 16px; border-radius: 16px; }
+  .app main > div > .hero { margin: -16px -16px 20px; }
+  .app main > div > .hero .hero-art svg { transform: none; }
+}
+
+/* Spacing after tables: notes and hints sit clear of the table border */
+.app main table { margin-bottom: 16px; }
+.app main table + p,
+.app main table + .muted,
+.app main table + .small,
+.app main table + p.muted { margin-top: 0; padding-top: 14px; display: block; line-height: 1.6; }
+
+/* Top bar: keep every button inside the screen width */
+.app .topbar { padding-right: clamp(12px, 2vw, 24px); }
+.app .topbar .top-actions { flex-wrap: nowrap; gap: 8px; }
+.app .topbar .top-actions button { white-space: nowrap; }
+
+/* Invitation link box */
+.invite-link { margin-top: 12px; }
+.invite-link-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 6px; }
+.invite-link-row code { flex: 1 1 260px; word-break: break-all; padding: 10px 12px; }
